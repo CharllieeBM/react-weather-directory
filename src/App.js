@@ -5,7 +5,7 @@ export default function App() {
   return (
     <div className="App">
       {" "}
-      Weather App
+      <h1>Weather App</h1>
       <footer>
         This project was coded by Charllotte Blackwell-Maleshkov and is
         open-sourced on{" "}
