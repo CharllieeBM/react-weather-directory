@@ -3,23 +3,21 @@ import axios from "axios";
 import "./Weather.css";
 
 export default function Weather(props) {
-  const [weatherData, setweatherData] = useState({ready: false });
+  const [weatherData, setweatherData] = useState({ ready: false });
   function handleResponse(response) {
     console.log(response.data);
-    
-    setweatherData(
-      {
-        ready: true,
-        temperature:(Math.round(response.data.main.temp)),
-        description: response.data.weather[0].description,
-        iconUrl:`https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
-        wind:response.data.wind.speed,
-        city: response.data.name,
-        humidity: response.data.main.humidity,
-        precipitation: response.data.main.temp_min,   
-        date: new Date(response.data.dt * 1000).toLocaleString(),
-      }
-    );
+
+    setweatherData({
+      ready: true,
+      temperature: Math.round(response.data.main.temp),
+      description: response.data.weather[0].description,
+      iconUrl: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+      wind: response.data.wind.speed,
+      city: response.data.name,
+      humidity: response.data.main.humidity,
+      precipitation: response.data.clouds.all,
+      date: new Date(response.data.dt * 1000).toLocaleString(),
+    });
   }
 
   if (weatherData.ready) {
